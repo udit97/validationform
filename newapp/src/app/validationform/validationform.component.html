@@ -1,0 +1,195 @@
+<form [formGroup]="form" class="form-group" >
+    <div class="border border-dark">
+        <h1>Validation Form<span [class.err]="form.touched && form.invalid">*</span></h1>
+        
+        
+        
+        <div class="">
+            <input 
+            formControlName="assoName"
+            type="text"
+            name="assoName" 
+            id="name" 
+            class="form-control" 
+            placeholder="Associate Name"
+            >
+            <div>
+                <p 
+                class="error-label"
+                *ngIf="assoName.touched && assoName.invalid">
+                Please enter the Associate Name
+                </p>
+                <p
+                class="error-label"
+                *ngIf="assoName.errors?.minlength || assoName.errors?.pattern || assoName.errors?.maxlength">
+                Accepts Alphabets, space & Min 5  to Max 30 Char
+                </p>
+                <p 
+                class="error-label"
+                *ngIf="">
+                Accepts Alphabets, space & Min 5  to Max 30 Char
+                </p>
+            </div>
+        </div>
+
+
+
+        
+        <div>
+            <input 
+            type="number" 
+            name="id" 
+            id="id" 
+            class="form-control" 
+            placeholder="Associate Id"
+            formControlName="id"
+            >
+            <div>
+                <p 
+                class="error-label"
+                *ngIf="id.touched && id.invalid">
+                Please enter the Associate id            
+                </p>
+                <p 
+                class="error-label"
+                *ngIf="id.errors?.pattern">
+                Invalid Associate Id
+                </p>
+            </div>
+        </div>
+
+
+
+
+
+        
+        <div>
+            <input 
+            type="text" 
+            name="projectId" 
+            id="projectId" 
+            class="form-control" 
+            placeholder="Project Id"
+            formControlName="projectId"
+            >
+            <div >
+                <p 
+                class="error-label"
+                *ngIf="projectId.touched && projectId.invalid">
+                Please enter the Project id
+                </p>
+                <p 
+                class="error-label"
+                *ngIf="projectId.errors?.pattern">
+                    Invalid Associate Id
+                </p>
+            </div>
+        </div>
+
+
+
+
+        
+        <div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" formControlName="location1" type="radio" name="location1" id="location1" (change)="onItemChange($event.target.value)" value="1">
+                <label class="form-check-label" for="inlineRadio1">Off-shore</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="location1" formControlName="location1" (change)="onItemChange($event.target.value)" id="location1" value="2">
+                <label class="form-check-label" for="inlineRadio2">On-shore</label>
+            </div>
+        </div>
+
+
+
+        
+        <div class="form-group form-custom">
+            <select id="inputState" class="form-control" formControlName="location2" placeholder="Select Location">
+            <option selected>Select Location</option>
+            <option *ngFor="let location of locations">{{location}}</option>
+            </select>
+            <div>
+                <p 
+                class="error-label"
+                *ngIf="location2.touched && location2.invalid">
+                    Please select the location
+                </p>
+            </div>
+        </div>
+
+
+    
+        <div>
+            <div class="form-check skills skills-div">
+                <label class="form-check-label skills" (change)="checkCheckBoxvalue($event.target.value)" for="defaultCheck1" *ngFor="let skill of skills">
+                    <input class="form-check-input" type="checkbox" formControlName="skill" [value]="skill.id" id="defaultCheck1">
+                    {{skill.name}}
+                </label>
+            </div>
+            <p
+            class="error-label"
+            *ngIf="isSelected==true">
+            Please select Min 5 skills
+            </p>
+        </div>
+
+
+
+        
+            <div class="form-group">
+                <p>Update Profile</p>
+                <input 
+                type="file" 
+                name="file" 
+                id="file" 
+                class="form-custom-1"
+                formControlName="file"
+                [class.error]="file.touched && file.invalid"
+                >
+                <div>
+                    <p 
+                    class="error-label"
+                    *ngIf="file.touched && file.invalid">
+                        Please upload Profile Picture
+                    </p>
+                </div>
+            </div>
+
+
+
+        
+        <div>
+                <textarea 
+                name="comment"  
+                id="comment" 
+                placeholder="Comments" 
+                class="form-group" 
+                formControlName="comment"
+                [class.error]="comment.touched && comment.invalid"
+                ></textarea>
+                <div>
+                    <p 
+                    class="error-label"
+                    style="top: -20px;"
+                    *ngIf="comment.touched && comment.invalid">
+                        Please Enter Comments
+                    </p>
+                </div>
+        </div>
+
+
+        
+            <div>
+                <button type="submit" (click)="onSubmit()" class="btn btn-primary" [disabled]="form.invalid" >Submit</button>
+                <button type="button" (click)="onReset()" class="btn btn-danger">Reset</button>
+            </div>
+            <div>
+                <p 
+                class="text-success"
+                    [hidden]="!isSubmitted">
+                SUBMITTED
+                </p>
+            </div>
+    </div>
+</form> 

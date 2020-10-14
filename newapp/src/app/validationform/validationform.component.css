@@ -1,0 +1,26 @@
+.border{
+    max-width: 800px;
+    margin: auto;
+}
+.form-control{
+    margin: 20px 0px;
+    padding: 0px 10px;
+}
+.form-group{
+    margin: 20px 0px;
+    padding: 0px 10px;
+}
+
+.error-label{
+    color: red;
+}
+
+
+.form-check-label.skills{
+    margin: 10px 50px;
+}
+#comment{
+    width:  600px;
+    height: 80px;
+    margin-left: 15px;
+}
